@@ -4,48 +4,6 @@
 	"parameters": {
 		"factoryName": {
 			"value": "df-lokesh-dev"
-		},
-		"AzureDataLakeStorage1_accountKey": {
-			"value": ""
-		},
-		"LS_src_password": {
-			"value": ""
-		},
-		"lnk_adls_accountKey": {
-			"value": ""
-		},
-		"lnk_azuresql_password": {
-			"value": ""
-		},
-		"snk_csv_accountKey": {
-			"value": ""
-		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://lokeshstorageaccountdev.dfs.core.windows.net/"
-		},
-		"LS_src_properties_typeProperties_server": {
-			"value": "lokeshsever1dev.database.windows.net"
-		},
-		"LS_src_properties_typeProperties_database": {
-			"value": "lokesh_db_dev"
-		},
-		"LS_src_properties_typeProperties_userName": {
-			"value": "lokeshadmin"
-		},
-		"lnk_adls_properties_typeProperties_url": {
-			"value": "https://lokeshstorageaccountdev.dfs.core.windows.net/"
-		},
-		"lnk_azuresql_properties_typeProperties_server": {
-			"value": "lokeshsever1dev.database.windows.net"
-		},
-		"lnk_azuresql_properties_typeProperties_database": {
-			"value": "lokesh_db_dev"
-		},
-		"lnk_azuresql_properties_typeProperties_userName": {
-			"value": "lokeshadmin"
-		},
-		"snk_csv_properties_typeProperties_url": {
-			"value": "https://lokeshstorageaccountdev.dfs.core.windows.net/"
 		}
 	}
 }
