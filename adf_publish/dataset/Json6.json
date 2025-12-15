@@ -1,0 +1,39 @@
+{
+	"name": "Json6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "json_files",
+				"fileSystem": "lokesh-dl-dev"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"BusinessEntityID": {
+					"type": "integer"
+				},
+				"PasswordHash": {
+					"type": "string"
+				},
+				"PasswordSalt": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

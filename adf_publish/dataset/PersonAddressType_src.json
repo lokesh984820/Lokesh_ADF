@@ -1,0 +1,37 @@
+{
+	"name": "PersonAddressType_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AddressTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "rowguid",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Person_AddressType"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

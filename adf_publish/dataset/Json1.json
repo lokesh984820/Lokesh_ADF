@@ -1,0 +1,39 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "json_files",
+				"fileSystem": "lokesh-dl-dev"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"BusinessEntityID": {
+					"type": "integer"
+				},
+				"EmailAddressID": {
+					"type": "integer"
+				},
+				"EmailAddress": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

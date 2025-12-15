@@ -1,0 +1,9 @@
+{
+	"name": "df-lokesh-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8949e3c0-5ebf-4de3-8cfe-6eb8cc895cd3",
+		"tenantId": "a8802ee9-7694-492b-9d1e-45e4ee9601ca"
+	}
+}

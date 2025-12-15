@@ -1,0 +1,33 @@
+{
+	"name": "PersonBusinessEntity_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BusinessEntityID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rowguid",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Person_BusinessEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

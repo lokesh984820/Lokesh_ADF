@@ -1,0 +1,33 @@
+{
+	"name": "Person_ContactType_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ContactTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Person_ContactType"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

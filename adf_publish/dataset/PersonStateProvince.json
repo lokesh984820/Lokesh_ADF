@@ -1,0 +1,55 @@
+{
+	"name": "PersonStateProvince",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_azuresql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "StateProvinceID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "StateProvinceCode",
+				"type": "varchar"
+			},
+			{
+				"name": "CountryRegionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsOnlyStateProvinceFlag",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "TerritoryID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rowguid",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Person_StateProvince"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

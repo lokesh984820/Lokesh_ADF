@@ -1,0 +1,39 @@
+{
+	"name": "Person_Person_Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "snk_csv",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Test_28112025",
+				"fileSystem": "lokesh-dl-dev"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"BusinessEntityID": {
+					"type": "integer"
+				},
+				"EmailAddressID": {
+					"type": "integer"
+				},
+				"EmailAddress": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
