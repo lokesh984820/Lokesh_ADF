@@ -13,46 +13,41 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/pl_SCD1_load_human_employee')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/tri_pl_load_multi_json_using_schemaname')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
 					{
-						"name": "SCD1_Load_HREmployee",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+						"pipelineReference": {
+							"referenceName": "pl_load_multi_json_using_schemaname",
+							"type": "PipelineReference"
 						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "SCD1_Load_HREmployee",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"HREmployeeData": {},
-									"sink1": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
+						"parameters": {}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Week",
+						"interval": 1,
+						"startTime": "2025-12-15T06:08:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								59
+							],
+							"hours": [
+								23
+							],
+							"weekDays": [
+								"Sunday"
+							]
+						}
+					}
+				}
 			},
 			"dependsOn": []
 		},
@@ -90,9 +85,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pl_SCD1_load_human_employee')]"
-			]
+			"dependsOn": []
 		}
 	]
 }
