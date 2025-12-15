@@ -1,0 +1,84 @@
+{
+	"name": "SCD1_Load_HREmployee",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText12",
+						"type": "DatasetReference"
+					},
+					"name": "HREmployeeData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable33",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          BusinessEntityID as integer,",
+				"          NationalIDNumber as string,",
+				"          LoginID as string,",
+				"          OrganizationNode as string,",
+				"          OrganizationLevel as integer,",
+				"          JobTitle as string,",
+				"          BirthDate as date,",
+				"          MaritalStatus as string,",
+				"          Gender as string,",
+				"          HireDate as date,",
+				"          SalariedFlag as integer,",
+				"          VacationHours as integer,",
+				"          SickLeaveHours as integer,",
+				"          CurrentFlag as integer,",
+				"          rowguid as string,",
+				"          ModifiedDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> HREmployeeData",
+				"HREmployeeData alterRow(upsertIf(1==1)) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          BusinessEntityID as integer,",
+				"          NationalIDNumber as string,",
+				"          LoginID as string,",
+				"          OrganizationNode as string,",
+				"          OrganizationLevel as integer,",
+				"          JobTitle as string,",
+				"          BirthDate as date,",
+				"          MaritalStatus as string,",
+				"          Gender as string,",
+				"          HireDate as date,",
+				"          SalariedFlag as boolean,",
+				"          VacationHours as integer,",
+				"          SickLeaveHours as integer,",
+				"          CurrentFlag as boolean,",
+				"          rowguid as string,",
+				"          ModifiedDate as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['BusinessEntityID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}
