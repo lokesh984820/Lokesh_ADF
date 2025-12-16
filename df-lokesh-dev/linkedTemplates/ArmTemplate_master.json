@@ -63,6 +63,10 @@
 			"type": "string",
 			"defaultValue": "https://lokeshstorageaccountdev.dfs.core.windows.net/"
 		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/bd6db3d6-7d7c-4870-9238-a2bcd7484873/resourceGroups/rg_lokesh/providers/Microsoft.Storage/storageAccounts/lokeshstorageaccountdev"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -249,6 +253,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					}
 				}
 			},
