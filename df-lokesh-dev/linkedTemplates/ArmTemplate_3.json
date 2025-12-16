@@ -13,6 +13,56 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Json2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "lnk_adls",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": "json_files",
+						"fileSystem": "lokesh-dl-dev"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"BusinessEntityID": {
+							"type": "integer"
+						},
+						"EmailAddressID": {
+							"type": "integer"
+						},
+						"EmailAddress": {
+							"type": "string"
+						},
+						"rowguid": {
+							"type": "string"
+						},
+						"ModifiedDate": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Json3')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -749,63 +799,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "Person_PhoneNumberType"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PersonStateProvince')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "lnk_azuresql",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "StateProvinceID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "StateProvinceCode",
-						"type": "varchar"
-					},
-					{
-						"name": "CountryRegionCode",
-						"type": "varchar"
-					},
-					{
-						"name": "IsOnlyStateProvinceFlag",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Name",
-						"type": "varchar"
-					},
-					{
-						"name": "TerritoryID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "rowguid",
-						"type": "varchar"
-					},
-					{
-						"name": "ModifiedDate",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "Person_StateProvince"
 				}
 			},
 			"dependsOn": []
