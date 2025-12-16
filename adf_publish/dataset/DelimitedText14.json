@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedText14",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Incremenal -',pipeline().RunId, '.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "IncrementalFiles",
+				"fileSystem": "lokesh-dl-dev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FileName",
+				"type": "String"
+			},
+			{
+				"name": "RowCount",
+				"type": "String"
+			}
+		]
+	}
+}
