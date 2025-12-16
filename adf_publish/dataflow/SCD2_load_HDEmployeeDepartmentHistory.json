@@ -1,0 +1,183 @@
+{
+	"name": "SCD2_load_HDEmployeeDepartmentHistory",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText13",
+						"type": "DatasetReference"
+					},
+					"name": "HRDEmployeeDepartmentHistoryfile"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable36",
+						"type": "DatasetReference"
+					},
+					"name": "EmployeeDepartmentHistoryTable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable38",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable39",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AddIsactiveColumn"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "getExistingrows"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          BusinessEntityID as integer,",
+				"          DepartmentID as integer,",
+				"          ShiftID as integer,",
+				"          StartDate as date,",
+				"          EndDate as date,",
+				"          ModifiedDate as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> HRDEmployeeDepartmentHistoryfile",
+				"source(output(",
+				"          Surrkey as integer,",
+				"          BusinessEntityID as integer,",
+				"          DepartmentID as integer,",
+				"          ShiftID as integer,",
+				"          StartDate as date,",
+				"          EndDate as date,",
+				"          ModifiedDate as timestamp,",
+				"          IsActive as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> EmployeeDepartmentHistoryTable",
+				"HRDEmployeeDepartmentHistoryfile derive(IsActive = 1) ~> AddIsactiveColumn",
+				"EmployeeDepartmentHistoryTable select(mapColumn(",
+				"          SQL_Surrkey = Surrkey,",
+				"          SQL_BusinessEntityID = BusinessEntityID,",
+				"          SQL_DepartmentID = DepartmentID,",
+				"          SQL_ShiftID = ShiftID,",
+				"          SQL_StartDate = StartDate,",
+				"          SQL_EndDate = EndDate,",
+				"          SQL_ModifiedDate = ModifiedDate,",
+				"          SQL_IsActive = IsActive",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"HRDEmployeeDepartmentHistoryfile, select1 lookup(BusinessEntityID == SQL_BusinessEntityID,",
+				"     multiple: true,",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 filter(!isNull(SQL_BusinessEntityID)) ~> getExistingrows",
+				"getExistingrows select(mapColumn(",
+				"          SQL_Surrkey,",
+				"          SQL_BusinessEntityID,",
+				"          SQL_DepartmentID,",
+				"          SQL_ShiftID,",
+				"          SQL_StartDate,",
+				"          SQL_EndDate,",
+				"          SQL_ModifiedDate,",
+				"          SQL_IsActive",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 derive(SQL_IsActive = 0) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(1==1)) ~> alterRow1",
+				"AddIsactiveColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Surrkey as integer,",
+				"          BusinessEntityID as integer,",
+				"          DepartmentID as integer,",
+				"          ShiftID as integer,",
+				"          StartDate as date,",
+				"          EndDate as date,",
+				"          ModifiedDate as timestamp,",
+				"          IsActive as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          BusinessEntityID,",
+				"          DepartmentID,",
+				"          ShiftID,",
+				"          StartDate,",
+				"          EndDate,",
+				"          ModifiedDate,",
+				"          IsActive",
+				"     )) ~> sink1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Surrkey as integer,",
+				"          BusinessEntityID as integer,",
+				"          DepartmentID as integer,",
+				"          ShiftID as integer,",
+				"          StartDate as date,",
+				"          EndDate as date,",
+				"          ModifiedDate as timestamp,",
+				"          IsActive as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['Surrkey'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Surrkey = SQL_Surrkey,",
+				"          BusinessEntityID = SQL_BusinessEntityID,",
+				"          DepartmentID = SQL_DepartmentID,",
+				"          ShiftID = SQL_ShiftID,",
+				"          StartDate = SQL_StartDate,",
+				"          EndDate = SQL_EndDate,",
+				"          ModifiedDate = SQL_ModifiedDate,",
+				"          IsActive = SQL_IsActive",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}
