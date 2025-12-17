@@ -1,0 +1,30 @@
+{
+	"name": "AzureSqlTable42",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_azuresql",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourceschemaname": {
+				"type": "string"
+			},
+			"sourcetablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().sourceschemaname",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().sourcetablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
