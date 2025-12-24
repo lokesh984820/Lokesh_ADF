@@ -763,7 +763,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "select * from\n(\nSELECT COUNT(*) AS CNT,LastModifytime, PersonID,Name\nFROM dbo.Data_source\nWHERE LastModifytime >  '@{activity('LkpOldWatermark').output.firstRow.WatermarkValue}'\n  AND LastModifytime <= '@{activity('LkpNewWatermark').output.firstRow.LatestDate}'\n  AND CAST(LastModifytime AS DATE) = CAST(GETDATE() AS DATE)\nGroup by LastModifytime,PersonID,Name\n)a where CNT<0",
+									"value": "SELECT *\nFROM dbo.Data_source\nWHERE LastModifytime >  '@{activity('LkpOldWatermark').output.firstRow.WatermarkValue}'\n  AND LastModifytime <= '@{activity('LkpNewWatermark').output.firstRow.LatestDate}'\n",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
