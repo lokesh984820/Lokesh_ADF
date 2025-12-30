@@ -1,0 +1,9 @@
+{
+	"name": "lokeshmADF",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c71e8f02-a202-4ff7-8b50-06922dfa886f",
+		"tenantId": "a4752bdc-ff75-45cc-bd24-e73862d7920d"
+	}
+}
