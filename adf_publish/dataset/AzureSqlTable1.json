@@ -2,35 +2,18 @@
 	"name": "AzureSqlTable1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_azuresql",
-			"type": "LinkedServiceReference"
+			"referenceName": "LNK_SRC",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbName": "db_dev"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [
-			{
-				"name": "AddressTypeID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "Name",
-				"type": "varchar"
-			},
-			{
-				"name": "rowguid",
-				"type": "varchar"
-			},
-			{
-				"name": "ModifiedDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			}
-		],
+		"schema": [],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "Person_AddressType"
+			"schema": "HumanResources",
+			"table": "Department"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
