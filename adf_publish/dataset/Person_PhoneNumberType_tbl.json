@@ -2,7 +2,7 @@
 	"name": "Person_PhoneNumberType_tbl",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_src",
+			"referenceName": "lnk_azuresql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

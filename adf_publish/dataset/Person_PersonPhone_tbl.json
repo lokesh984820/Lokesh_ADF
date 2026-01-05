@@ -28,7 +28,11 @@
 				"precision": 23,
 				"scale": 3
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": "HumanResources",
+			"table": "Department"
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

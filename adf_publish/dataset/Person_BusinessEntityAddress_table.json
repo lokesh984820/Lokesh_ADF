@@ -2,7 +2,7 @@
 	"name": "Person_BusinessEntityAddress_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_src",
+			"referenceName": "lnk_azuresql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -33,11 +33,7 @@
 				"precision": 23,
 				"scale": 3
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "Person_BusinessEntityAddress"
-		}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

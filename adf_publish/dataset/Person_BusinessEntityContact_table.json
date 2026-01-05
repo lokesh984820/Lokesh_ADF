@@ -2,7 +2,7 @@
 	"name": "Person_BusinessEntityContact_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_src",
+			"referenceName": "lnk_azuresql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -36,7 +36,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Person_BusinessEntityContact"
+			"table": "Person"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

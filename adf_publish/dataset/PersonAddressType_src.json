@@ -2,7 +2,7 @@
 	"name": "PersonAddressType_src",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_src",
+			"referenceName": "lnk_azuresql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -27,11 +27,7 @@
 				"precision": 23,
 				"scale": 3
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "Person_AddressType"
-		}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
