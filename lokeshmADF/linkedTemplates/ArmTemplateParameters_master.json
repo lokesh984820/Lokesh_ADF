@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "lokeshmADF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"lnk_adls_accountKey": {
+			"value": ""
+		},
+		"lnk_azuresql_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://lokeshmstorage.dfs.core.windows.net/"
+		},
+		"lnk_adls_properties_typeProperties_url": {
+			"value": "https://lokeshmstorage.dfs.core.windows.net/"
+		},
+		"lnk_azuresql_properties_typeProperties_server": {
+			"value": "serevr-lokesh.database.windows.net"
+		},
+		"lnk_azuresql_properties_typeProperties_database": {
+			"value": "db_dev"
+		},
+		"lnk_azuresql_properties_typeProperties_userName": {
+			"value": "lokeshadmin"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/bd6db3d6-7d7c-4870-9238-a2bcd7484873/resourceGroups/rg_lokesh/providers/Microsoft.Storage/storageAccounts/lokeshstorageaccountdev"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
