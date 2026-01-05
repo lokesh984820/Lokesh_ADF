@@ -1,13 +1,6 @@
 {
 	"name": "AzureSqlTable2",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "LNK_SRC",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"dbName": "db_test"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

@@ -2,7 +2,7 @@
 	"name": "Person_PersonPhone_tbl",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_src",
+			"referenceName": "lnk_azuresql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -28,11 +28,7 @@
 				"precision": 23,
 				"scale": 3
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "Person_PersonPhone"
-		}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
