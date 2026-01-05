@@ -1,0 +1,19 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_SRC",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbName": "db_dev"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "HumanResources",
+			"table": "Department"
+		}
+	}
+}
